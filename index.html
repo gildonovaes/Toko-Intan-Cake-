@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -18,13 +19,17 @@
             --location-color: #3498db;
         }
 
+        /* Efeito de rolagem suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #fce4ec;
             margin: 0;
             display: flex;
             justify-content: center;
-            /* Evita rolagem lateral acidental */
             overflow-x: hidden; 
         }
 
@@ -55,6 +60,7 @@
             font-weight: bold; margin-bottom: 10px; font-size: 18px;
         }
 
+        /* Setinha agora é um link clicável */
         .scroll-indicator {
             position: absolute;
             left: 50%;
@@ -65,7 +71,8 @@
             flex-direction: column;
             align-items: center;
             animation: bounce 2s infinite;
-            pointer-events: none;
+            text-decoration: none; /* Remove sublinhado do link */
+            cursor: pointer;
         }
 
         .scroll-circle {
@@ -93,22 +100,17 @@
             object-fit: cover; border: 2px solid #fce4ec;
         }
 
-        @keyframes pulse-wa { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
-        @keyframes pulse-share { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
-        @keyframes pulse-gps { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
-
         .btn {
             display: block; margin: 12px 25px; padding: 18px;
             border-radius: 50px; text-decoration: none; font-weight: bold;
             font-size: 18px; border: none; cursor: pointer;
             width: calc(100% - 50px); box-sizing: border-box; color: white;
-            /* Impede que o clique duplo no botão dê zoom */
             touch-action: manipulation;
         }
 
-        .btn-order { background-color: var(--whatsapp-color); animation: pulse-wa 2s infinite; }
-        .btn-share { background-color: var(--secondary-color); animation: pulse-share 2.2s infinite; }
-        .btn-location { background-color: var(--location-color); animation: pulse-gps 2.4s infinite; }
+        .btn-order { background-color: var(--whatsapp-color); }
+        .btn-share { background-color: var(--secondary-color); }
+        .btn-location { background-color: var(--location-color); }
 
         .footer {
             margin-top: 30px; font-size: 13px; color: #7f8c8d;
@@ -117,7 +119,9 @@
         .dev-contact { color: var(--primary-color); text-decoration: none; font-weight: bold; }
     </style>
 </head>
-<body oncontextmenu="return false;"> <div class="container">
+<body>
+
+<div class="container">
     <img src="https://i.ibb.co.com/MDxfLXrb/Whats-App-Image-2026-05-07-at-17-33-28.jpg" class="banner-img">
 
     <div class="profile-section">
@@ -127,10 +131,10 @@
     <div class="store-name">Toko Intan Cake</div>
     <div class="price-badge">Mulai dari Rp 25.000</div>
 
-    <div class="scroll-indicator">
+    <a href="#menu-secao" class="scroll-indicator">
         <span style="font-size: 11px; color: var(--primary-color); font-weight: bold; background: white; padding: 2px 8px; border-radius: 10px; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">LIHAT MENU</span>
         <div class="scroll-circle">↓</div>
-    </div>
+    </a>
 
     <div class="product-grid">
         <img src="https://i.ibb.co.com/wNL3cp8n/Whats-App-Image-2026-05-07-at-17-21-39-1.jpg" class="product-img">
@@ -138,6 +142,8 @@
         <img src="https://i.ibb.co.com/tpDhLhPG/Whats-App-Image-2026-05-07-at-21-30-44.jpg" class="product-img">
         <img src="https://i.ibb.co.com/q3DQWwkf/Whats-App-Image-2026-05-07-at-17-21-40.jpg" class="product-img">
     </div>
+
+    <div id="menu-secao"></div>
 
     <a href="whatsapp://send?phone=6282255944446&text=Halo%20Toko%20Intan%20Cake!%20Saya%20ingin%20melihat%20menu%20dan%20melakukan%20pemesanan.%20Bisa%20dibantu?" class="btn btn-order">
         💬 Pesan via WhatsApp
