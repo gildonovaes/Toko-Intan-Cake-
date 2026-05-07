@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>Toko Intan Cake - Batu Kajang</title>
     <meta property="og:title" content="Toko Intan Cake - Batu Kajang 🍰">
@@ -24,6 +24,8 @@
             margin: 0;
             display: flex;
             justify-content: center;
+            /* Evita rolagem lateral acidental */
+            overflow-x: hidden; 
         }
 
         .container {
@@ -100,6 +102,8 @@
             border-radius: 50px; text-decoration: none; font-weight: bold;
             font-size: 18px; border: none; cursor: pointer;
             width: calc(100% - 50px); box-sizing: border-box; color: white;
+            /* Impede que o clique duplo no botão dê zoom */
+            touch-action: manipulation;
         }
 
         .btn-order { background-color: var(--whatsapp-color); animation: pulse-wa 2s infinite; }
@@ -113,9 +117,7 @@
         .dev-contact { color: var(--primary-color); text-decoration: none; font-weight: bold; }
     </style>
 </head>
-<body>
-
-<div class="container">
+<body oncontextmenu="return false;"> <div class="container">
     <img src="https://i.ibb.co.com/MDxfLXrb/Whats-App-Image-2026-05-07-at-17-33-28.jpg" class="banner-img">
 
     <div class="profile-section">
