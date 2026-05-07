@@ -19,7 +19,6 @@
             --location-color: #3498db;
         }
 
-        /* Efeito de rolagem suave */
         html {
             scroll-behavior: smooth;
         }
@@ -60,7 +59,6 @@
             font-weight: bold; margin-bottom: 10px; font-size: 18px;
         }
 
-        /* Setinha agora é um link clicável */
         .scroll-indicator {
             position: absolute;
             left: 50%;
@@ -71,7 +69,7 @@
             flex-direction: column;
             align-items: center;
             animation: bounce 2s infinite;
-            text-decoration: none; /* Remove sublinhado do link */
+            text-decoration: none;
             cursor: pointer;
         }
 
@@ -100,17 +98,23 @@
             object-fit: cover; border: 2px solid #fce4ec;
         }
 
+        /* ANIMAÇÕES DE PULSO */
+        @keyframes pulse-wa { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes pulse-share { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes pulse-gps { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
         .btn {
-            display: block; margin: 12px 25px; padding: 18px;
+            display: block; margin: 15px 25px; padding: 18px;
             border-radius: 50px; text-decoration: none; font-weight: bold;
             font-size: 18px; border: none; cursor: pointer;
             width: calc(100% - 50px); box-sizing: border-box; color: white;
             touch-action: manipulation;
+            position: relative;
         }
 
-        .btn-order { background-color: var(--whatsapp-color); }
-        .btn-share { background-color: var(--secondary-color); }
-        .btn-location { background-color: var(--location-color); }
+        .btn-order { background-color: var(--whatsapp-color) !important; animation: pulse-wa 2s infinite !important; }
+        .btn-share { background-color: var(--secondary-color) !important; animation: pulse-share 2.2s infinite !important; }
+        .btn-location { background-color: var(--location-color) !important; animation: pulse-gps 2.4s infinite !important; }
 
         .footer {
             margin-top: 30px; font-size: 13px; color: #7f8c8d;
@@ -143,7 +147,7 @@
         <img src="https://i.ibb.co.com/q3DQWwkf/Whats-App-Image-2026-05-07-at-17-21-40.jpg" class="product-img">
     </div>
 
-    <div id="menu-secao"></div>
+    <div id="menu-secao" style="height: 10px;"></div>
 
     <a href="whatsapp://send?phone=6282255944446&text=Halo%20Toko%20Intan%20Cake!%20Saya%20ingin%20melihat%20menu%20dan%20melakukan%20pemesanan.%20Bisa%20dibantu?" class="btn btn-order">
         💬 Pesan via WhatsApp
