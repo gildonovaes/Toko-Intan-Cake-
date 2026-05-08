@@ -50,7 +50,6 @@
         }
 
         .store-name { font-size: 26px; font-weight: bold; color: var(--secondary-color); margin: 10px 0 5px; }
-        /* Pequeno ajuste para a saudação ficar elegante */
         .welcome-text { font-size: 16px; color: var(--primary-color); margin-bottom: -5px; font-weight: 500; }
 
         .price-badge {
@@ -98,10 +97,6 @@
             object-fit: cover; border: 2px solid #fce4ec;
         }
 
-        @keyframes pulse-wa { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        @keyframes pulse-share { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        @keyframes pulse-gps { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-
         .btn {
             display: block; margin: 15px 25px; padding: 18px;
             border-radius: 50px; text-decoration: none; font-weight: bold;
@@ -111,9 +106,9 @@
             position: relative;
         }
 
-        .btn-order { background-color: var(--whatsapp-color) !important; animation: pulse-wa 2s infinite !important; }
-        .btn-share { background-color: var(--secondary-color) !important; animation: pulse-share 2.2s infinite !important; }
-        .btn-location { background-color: var(--location-color) !important; animation: pulse-gps 2.4s infinite !important; }
+        .btn-order { background-color: var(--whatsapp-color); }
+        .btn-share { background-color: var(--secondary-color); }
+        .btn-location { background-color: var(--location-color); }
 
         .footer {
             margin-top: 30px; font-size: 13px; color: #7f8c8d;
@@ -171,14 +166,19 @@
 
 <script>
     function shareLink() {
-        var titulo = "Kartu Nama Toko Intan Cake - Batu Kajang";
+        // Título em negrito (*) conforme solicitado para o balão do WhatsApp
+        var titulo = "*Kartu Nama Toko Intan Cake - Batu Kajang*";
+        
+        // Descrição informando para ver contato e localização em Indonésio
         var descricao = "Klik link di bawah untuk melihat kontak dan lokasi kami:";
         
-        // Limpa o link de qualquer hashtag para não parecer vírus
-        var linkLimpo = window.location.href.split('#')[0];
+        // Limpa o link de qualquer hashtag (#) para não parecer vírus
+        var urlLimpa = window.location.href.split('#')[0];
         
-        var mensagemFinal = titulo + "\n\n" + descricao + "\n\n" + linkLimpo;
+        // Montagem final da mensagem com o novo texto
+        var mensagemFinal = titulo + "\n\n" + descricao + "\n\n" + urlLimpa;
         
+        // Executa o compartilhamento
         window.location.href = "whatsapp://send?text=" + encodeURIComponent(mensagemFinal);
     }
 </script>
