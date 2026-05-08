@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>Toko Intan Cake - Batu Kajang</title>
-    <meta property="og:title" content="Toko Intan Cake - Batu Kajang">
-    <meta property="og:description" content="Kue lezat & Spesial. Klik untuk melihat menu dan lokasi kami!">
+    
+    <meta property="og:title" content="Kartu Nama Toko Intan Cake - Batu Kajang">
+    <meta property="og:description" content="Klik link di bawah untuk melihat kontak dan lokasi kami:">
     <meta property="og:image" content="https://i.ibb.co.com/xSBngtxm/Whats-App-Image-2026-05-07-at-17-20-14-removebg-preview.png">
     <meta property="og:type" content="website">
 
@@ -166,19 +167,13 @@
 
 <script>
     function shareLink() {
-        // Título em negrito (*) conforme solicitado para o balão do WhatsApp
-        var titulo = "*Kartu Nama Toko Intan Cake - Batu Kajang*";
-        
-        // Descrição informando para ver contato e localização em Indonésio
+        // Título e descrição sem asteriscos
+        var titulo = "Kartu Nama Toko Intan Cake - Batu Kajang";
         var descricao = "Klik link di bawah untuk melihat kontak dan lokasi kami:";
+        var linkLimpo = window.location.href.split('#')[0];
         
-        // Limpa o link de qualquer hashtag (#) para não parecer vírus
-        var urlLimpa = window.location.href.split('#')[0];
+        var mensagemFinal = titulo + "\n\n" + descricao + "\n\n" + linkLimpo;
         
-        // Montagem final da mensagem com o novo texto
-        var mensagemFinal = titulo + "\n\n" + descricao + "\n\n" + urlLimpa;
-        
-        // Executa o compartilhamento
         window.location.href = "whatsapp://send?text=" + encodeURIComponent(mensagemFinal);
     }
 </script>
