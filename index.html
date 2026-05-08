@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -17,6 +18,8 @@
             --secondary-color: #6a0dad; 
             --whatsapp-color: #25d366;
             --location-color: #3498db;
+            --instagram-color: #E1306C;
+            --facebook-color: #1877F2;
         }
 
         html { scroll-behavior: smooth; }
@@ -38,7 +41,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             text-align: center;
             position: relative;
-            padding-bottom: 50px;
+            padding-bottom: 20px;
         }
 
         .banner-img { width: 100%; height: 220px; object-fit: cover; }
@@ -86,10 +89,10 @@
             60% {transform: translateY(-7px) translateX(-50%);}
         }
 
-        /* ANIMAÇÕES DE PULSAR */
         @keyframes pulse-wa { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         @keyframes pulse-share { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         @keyframes pulse-gps { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes pulse-social { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
         .product-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
@@ -102,23 +105,34 @@
             object-fit: cover; border: 2px solid #fce4ec;
         }
 
-        .btn {
-            display: block; margin: 15px 25px; padding: 18px;
-            border-radius: 50px; text-decoration: none; font-weight: bold;
-            font-size: 18px; border: none; cursor: pointer;
-            width: calc(100% - 50px); box-sizing: border-box; color: white;
-            touch-action: manipulation;
-            position: relative;
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 0 25px;
+            margin-top: 20px;
         }
 
-        /* APLICANDO AS ANIMAÇÕES AOS BOTÕES */
+        .btn {
+            display: block; padding: 16px;
+            border-radius: 50px; text-decoration: none; font-weight: bold;
+            font-size: 17px; border: none; cursor: pointer;
+            width: 100%; box-sizing: border-box; color: white;
+            touch-action: manipulation;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
         .btn-order { background-color: var(--whatsapp-color); animation: pulse-wa 2s infinite; }
-        .btn-share { background-color: var(--secondary-color); animation: pulse-share 2.2s infinite; }
+        .btn-instagram { background-color: var(--instagram-color); animation: pulse-social 2.6s infinite; }
+        .btn-facebook { background-color: var(--facebook-color); animation: pulse-social 2.8s infinite; }
         .btn-location { background-color: var(--location-color); animation: pulse-gps 2.4s infinite; }
+        .btn-share { background-color: var(--secondary-color); animation: pulse-share 2.2s infinite; }
 
         .footer {
-            margin-top: 30px; font-size: 13px; color: #7f8c8d;
+            margin-top: 40px; font-size: 13px; color: #7f8c8d;
             padding: 25px; background: #fdf0f6; border-top: 1px solid #fce4ec;
+            line-height: 1.6;
         }
         .dev-contact { color: var(--primary-color); text-decoration: none; font-weight: bold; }
     </style>
@@ -127,14 +141,12 @@
 
 <div class="container">
     <img src="https://i.ibb.co.com/MDxfLXrb/Whats-App-Image-2026-05-07-at-17-33-28.jpg" class="banner-img">
-
     <div class="profile-section">
         <img src="https://i.ibb.co.com/xSBngtxm/Whats-App-Image-2026-05-07-at-17-20-14-removebg-preview.png" class="profile-img">
     </div>
 
     <div class="welcome-text">Selamat Datang di</div>
     <div class="store-name">Toko Intan Cake</div>
-    
     <div class="price-badge">Mulai dari Rp 25.000</div>
 
     <a href="#menu-secao" class="scroll-indicator">
@@ -149,19 +161,29 @@
         <img src="https://i.ibb.co.com/q3DQWwkf/Whats-App-Image-2026-05-07-at-17-21-40.jpg" class="product-img">
     </div>
 
-    <div id="menu-secao" style="height: 10px;"></div>
+    <div id="menu-secao" style="height: 1px;"></div>
 
-    <a href="whatsapp://send?phone=6282255944446&text=Halo%20Toko%20Intan%20Cake!%20Saya%20ingin%20melihat%20menu%20dan%20melakukan%20pemesanan.%20Bisa%20dibantu?" class="btn btn-order">
-        💬 Pesan via WhatsApp
-    </a>
+    <div class="btn-container">
+        <a href="whatsapp://send?phone=6282255944446&text=Halo%20Toko%20Intan%20Cake!%20Saya%20ingin%20melihat%20menu%20dan%20melakukan%20pemesanan.%20Bisa%20dibantu?" class="btn btn-order">
+            💬 Pesan via WhatsApp
+        </a>
 
-    <button onclick="shareLink()" class="btn btn-share">
-        📲 Bagikan Kartu Nama
-    </button>
+        <a href="https://www.instagram.com/intancake1991" class="btn btn-instagram">
+            📸 Ikuti di Instagram
+        </a>
 
-    <a href="https://www.google.com/maps/search/?api=1&query=Toko+Intan+Cake+Batu+Kajang" class="btn btn-location">
-        📍 Lokasi Toko (GPS)
-    </a>
+        <a href="https://www.facebook.com/share/1DTAVkuk1F/" class="btn btn-facebook">
+            🔵 Facebook Kami
+        </a>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=Toko+Intan+Cake+Batu+Kajang" class="btn btn-location">
+            📍 Lokasi Toko (GPS)
+        </a>
+
+        <button onclick="shareLink()" class="btn btn-share">
+            📲 Bagikan Kartu Nama
+        </button>
+    </div>
 
     <div class="footer">
         <b>Toko Intan Cake</b> - Manis & Higienis<br><br>
@@ -175,9 +197,7 @@
         var titulo = "Kartu Nama Toko Intan Cake - Batu Kajang";
         var descricao = "Klik link di bawah untuk melihat kontak dan lokasi kami:";
         var linkLimpo = window.location.href.split('#')[0];
-        
         var mensagemFinal = titulo + "\n\n" + descricao + "\n\n" + linkLimpo;
-        
         window.location.href = "whatsapp://send?text=" + encodeURIComponent(mensagemFinal);
     }
 </script>
