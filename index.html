@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -87,6 +86,11 @@
             60% {transform: translateY(-7px) translateX(-50%);}
         }
 
+        /* ANIMAÇÕES DE PULSAR */
+        @keyframes pulse-wa { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes pulse-share { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes pulse-gps { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
         .product-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
             padding: 0 20px; margin-bottom: 20px;
@@ -107,9 +111,10 @@
             position: relative;
         }
 
-        .btn-order { background-color: var(--whatsapp-color); }
-        .btn-share { background-color: var(--secondary-color); }
-        .btn-location { background-color: var(--location-color); }
+        /* APLICANDO AS ANIMAÇÕES AOS BOTÕES */
+        .btn-order { background-color: var(--whatsapp-color); animation: pulse-wa 2s infinite; }
+        .btn-share { background-color: var(--secondary-color); animation: pulse-share 2.2s infinite; }
+        .btn-location { background-color: var(--location-color); animation: pulse-gps 2.4s infinite; }
 
         .footer {
             margin-top: 30px; font-size: 13px; color: #7f8c8d;
@@ -167,7 +172,6 @@
 
 <script>
     function shareLink() {
-        // Título e descrição sem asteriscos
         var titulo = "Kartu Nama Toko Intan Cake - Batu Kajang";
         var descricao = "Klik link di bawah untuk melihat kontak dan lokasi kami:";
         var linkLimpo = window.location.href.split('#')[0];
