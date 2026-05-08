@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>Toko Intan Cake - Batu Kajang</title>
-    <meta property="og:title" content="Toko Intan Cake - Batu Kajang 🍰">
+    <meta property="og:title" content="Toko Intan Cake - Batu Kajang">
     <meta property="og:description" content="Kue lezat & Spesial. Klik untuk melihat menu dan lokasi kami!">
     <meta property="og:image" content="https://i.ibb.co.com/xSBngtxm/Whats-App-Image-2026-05-07-at-17-20-14-removebg-preview.png">
     <meta property="og:type" content="website">
@@ -19,9 +19,7 @@
             --location-color: #3498db;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -52,6 +50,8 @@
         }
 
         .store-name { font-size: 26px; font-weight: bold; color: var(--secondary-color); margin: 10px 0 5px; }
+        /* Pequeno ajuste para a saudação ficar elegante */
+        .welcome-text { font-size: 16px; color: var(--primary-color); margin-bottom: -5px; font-weight: 500; }
 
         .price-badge {
             display: inline-block; background: var(--primary-color);
@@ -98,7 +98,6 @@
             object-fit: cover; border: 2px solid #fce4ec;
         }
 
-        /* ANIMAÇÕES DE PULSO */
         @keyframes pulse-wa { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         @keyframes pulse-share { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         @keyframes pulse-gps { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
@@ -132,7 +131,9 @@
         <img src="https://i.ibb.co.com/xSBngtxm/Whats-App-Image-2026-05-07-at-17-20-14-removebg-preview.png" class="profile-img">
     </div>
 
+    <div class="welcome-text">Selamat Datang di</div>
     <div class="store-name">Toko Intan Cake</div>
+    
     <div class="price-badge">Mulai dari Rp 25.000</div>
 
     <a href="#menu-secao" class="scroll-indicator">
@@ -170,8 +171,15 @@
 
 <script>
     function shareLink() {
-        var text = "Lihat kue lezat di Toko Intan Cake: " + window.location.href;
-        window.location.href = "whatsapp://send?text=" + encodeURIComponent(text);
+        var titulo = "Kartu Nama Toko Intan Cake - Batu Kajang";
+        var descricao = "Klik link di bawah untuk melihat kontak dan lokasi kami:";
+        
+        // Limpa o link de qualquer hashtag para não parecer vírus
+        var linkLimpo = window.location.href.split('#')[0];
+        
+        var mensagemFinal = titulo + "\n\n" + descricao + "\n\n" + linkLimpo;
+        
+        window.location.href = "whatsapp://send?text=" + encodeURIComponent(mensagemFinal);
     }
 </script>
 
