@@ -20,6 +20,7 @@
             --location-color: #3498db;
             --instagram-color: #E1306C;
             --facebook-color: #1877F2;
+            --flame-color: rgba(255, 0, 127, 0.4);
         }
 
         html { scroll-behavior: smooth; }
@@ -41,7 +42,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             text-align: center;
             position: relative;
-            padding-bottom: 20px;
+            padding-bottom: 50px;
         }
 
         .banner-img { width: 100%; height: 220px; object-fit: cover; }
@@ -61,39 +62,41 @@
             font-weight: bold; margin-bottom: 10px; font-size: 18px;
         }
 
-        .scroll-indicator {
-            position: absolute;
+        /* SISTEMA DA SETA INTELIGENTE */
+        #scroll-indicator {
+            position: fixed;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            top: 550px; 
-            z-index: 10;
+            z-index: 99999;
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        .social-label-alert { 
+            font-size: 11px; font-weight: bold; color: white; background: var(--primary-color); 
+            padding: 4px 12px; border-radius: 20px; text-transform: uppercase; margin-bottom: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .arrow-circle { 
+            width: 55px; height: 55px; background: var(--primary-color); border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4); border: 3px solid white; cursor: pointer;
             animation: bounce 2s infinite;
-            text-decoration: none;
-            cursor: pointer;
         }
 
-        .scroll-circle {
-            width: 40px; height: 40px; background: var(--primary-color);
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; color: white; font-size: 22px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            border: 2px solid white;
+        @keyframes bounce { 
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+            40% {transform: translateY(-12px);} 
+            60% {transform: translateY(-6px);} 
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
-            40% {transform: translateY(-15px) translateX(-50%);}
-            60% {transform: translateY(-7px) translateX(-50%);}
-        }
-
-        @keyframes pulse-wa { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        @keyframes pulse-share { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        @keyframes pulse-gps { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        @keyframes pulse-social { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
-
+        /* PRODUTOS */
         .product-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
             padding: 0 20px; margin-bottom: 20px;
@@ -105,6 +108,7 @@
             object-fit: cover; border: 2px solid #fce4ec;
         }
 
+        /* BOTÕES */
         .btn-container {
             display: flex;
             flex-direction: column;
@@ -118,16 +122,22 @@
             border-radius: 50px; text-decoration: none; font-weight: bold;
             font-size: 17px; border: none; cursor: pointer;
             width: 100%; box-sizing: border-box; color: white;
-            touch-action: manipulation;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: pulse-light 2.5s infinite ease-in-out;
         }
 
-        .btn-order { background-color: var(--whatsapp-color); animation: pulse-wa 2s infinite; }
-        .btn-instagram { background-color: var(--instagram-color); animation: pulse-social 2.6s infinite; }
-        .btn-facebook { background-color: var(--facebook-color); animation: pulse-social 2.8s infinite; }
-        .btn-location { background-color: var(--location-color); animation: pulse-gps 2.4s infinite; }
-        .btn-share { background-color: var(--secondary-color); animation: pulse-share 2.2s infinite; }
+        @keyframes pulse-light {
+            0% { transform: scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+            50% { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+            100% { transform: scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        }
+
+        .btn-order { background-color: var(--whatsapp-color); }
+        .btn-instagram { background-color: var(--instagram-color); }
+        .btn-facebook { background-color: var(--facebook-color); }
+        .btn-location { background-color: var(--location-color); }
+        .btn-share { background-color: var(--secondary-color); }
 
         .footer {
             margin-top: 40px; font-size: 13px; color: #7f8c8d;
@@ -137,7 +147,13 @@
         .dev-contact { color: var(--primary-color); text-decoration: none; font-weight: bold; }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
+
+<!-- SETA INTELIGENTE -->
+<div id="scroll-indicator">
+    <span class="social-label-alert">Lihat Menu & Sosial</span>
+    <div class="arrow-circle" onclick="document.getElementById('social-section-target').scrollIntoView();">↓</div>
+</div>
 
 <div class="container">
     <img src="https://i.ibb.co.com/MDxfLXrb/Whats-App-Image-2026-05-07-at-17-33-28.jpg" class="banner-img">
@@ -149,11 +165,6 @@
     <div class="store-name">Toko Intan Cake</div>
     <div class="price-badge">Mulai dari Rp 25.000</div>
 
-    <a href="#menu-secao" class="scroll-indicator">
-        <span style="font-size: 11px; color: var(--primary-color); font-weight: bold; background: white; padding: 2px 8px; border-radius: 10px; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">LIHAT MENU</span>
-        <div class="scroll-circle">↓</div>
-    </a>
-
     <div class="product-grid">
         <img src="https://i.ibb.co.com/wNL3cp8n/Whats-App-Image-2026-05-07-at-17-21-39-1.jpg" class="product-img">
         <img src="https://i.ibb.co.com/qYZNWLgm/Whats-App-Image-2026-05-07-at-21-20-43.jpg" class="product-img">
@@ -161,7 +172,8 @@
         <img src="https://i.ibb.co.com/q3DQWwkf/Whats-App-Image-2026-05-07-at-17-21-40.jpg" class="product-img">
     </div>
 
-    <div id="menu-secao" style="height: 1px;"></div>
+    <!-- ALVO DA SETA -->
+    <div id="social-section-target" style="height: 1px;"></div>
 
     <div class="btn-container">
         <a href="whatsapp://send?phone=6282255944446&text=Halo%20Toko%20Intan%20Cake!%20Saya%20ingin%20melihat%20menu%20dan%20melakukan%20pemesanan.%20Bisa%20dibantu?" class="btn btn-order">
@@ -193,6 +205,25 @@
 </div>
 
 <script>
+    const indicator = document.getElementById('scroll-indicator');
+
+    function updateArrowVisibility() {
+        // Regra: só aparece se estiver no topo (menos de 20px de rolagem)
+        if (window.scrollY < 20) {
+            indicator.style.opacity = "1";
+            indicator.style.pointerEvents = "auto";
+            indicator.style.transform = "translateX(-50%) translateY(0)";
+        } else {
+            indicator.style.opacity = "0";
+            indicator.style.pointerEvents = "none";
+            indicator.style.transform = "translateX(-50%) translateY(20px)";
+        }
+    }
+
+    window.addEventListener('scroll', updateArrowVisibility);
+    window.addEventListener('focus', updateArrowVisibility);
+    updateArrowVisibility();
+
     function shareLink() {
         var titulo = "Kartu Nama Toko Intan Cake - Batu Kajang";
         var descricao = "Klik link di bawah untuk melihat kontak dan lokasi kami:";
@@ -202,6 +233,7 @@
     }
 </script>
 
+<!-- SCRIPT ADSTERRA -->
 <script src="https://pl29368197.profitablecpmratenetwork.com/76/50/66/7650664099af8bf18005430efb542dcb.js"></script>
 
 </body>
